@@ -12,7 +12,7 @@ const addUser = ({
   // Validate the data
   if (!username || !room) {
     return {
-      error: 'Username and room are required'
+      error: '需要提供用户名和聊天室名'
     }
   }
 
@@ -24,7 +24,7 @@ const addUser = ({
   // Validate username
   if (existingUser) {
     return {
-      error: 'Username is in use!'
+      error: '用户名已经被用了!'
     }
   }
 
