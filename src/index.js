@@ -46,7 +46,7 @@ io.on("connection", socket => {
     socket.join(user.room)
 
     socket.emit("message", generateMessage("Admin", "欢迎!"));
-    socket.broadcast.to(user.room).emit("message", generateMessage("Admin", `${user.username} has joined!`));
+    socket.broadcast.to(user.room).emit("message", generateMessage("Admin", `${user.username} 上线了!`));
     io.to(user.room).emit('roomData', {
       room: user.room,
       users: getUsersInRoom(user.room)
@@ -71,7 +71,7 @@ io.on("connection", socket => {
     const user = removeUser(socket.id)
 
     if (user) {
-      io.to(user.room).emit("message", generateMessage("Admin", `${user.username} has left.`));
+      io.to(user.room).emit("message", generateMessage("Admin", `${user.username} 下线了.`));
       io.to(user.room).emit('roomData', {
         room: user.room,
         users: getUsersInRoom(user.room)
